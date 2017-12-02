@@ -56,7 +56,6 @@ class ViewController: UIViewController, TimelineFeedDataSource, TimelineFeedDele
 		})
 		
 		self.timelineFeed = timelineFeed
-		
 	}
 
 	// MARK: TimelineFeedDataSource
