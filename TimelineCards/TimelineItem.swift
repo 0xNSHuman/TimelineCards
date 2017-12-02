@@ -31,16 +31,16 @@ import UIKit
 
 /// Main building block of input data for `TimelineCard` or `TimelineFeed` views. It implements `TimelineSourceElement` protocol that describes all the necessary properties `TimelineCard` needs in order to automatically draw and lay out itself.
 
-class TimelineItem: TimelineSourceElement {
-	let id: UUID
+public class TimelineItem: TimelineSourceElement {
+	public let id: UUID
 	
-	var subelements: [TimelineSourceElement]? = nil
+	public var subelements: [TimelineSourceElement]? = nil
 	
-	var milestoneShape: TimelineCard.ItemShape
-	var title: NSAttributedString?
-	var subtitle: NSAttributedString?
-	var customView: UIView?
-	var icon: UIImage?
+	public var milestoneShape: TimelineCard.ItemShape
+	public var title: NSAttributedString?
+	public var subtitle: NSAttributedString?
+	public var customView: UIView?
+	public var icon: UIImage?
 	
 	init(title: NSAttributedString, subtitle: NSAttributedString,
 	     shape: TimelineCard.ItemShape = .circle, icon: UIImage? = nil) {
@@ -64,7 +64,7 @@ class TimelineItem: TimelineSourceElement {
 
 /// Extended version of `TimelineItem` that supports children.
 
-class TimelineItemGroup: TimelineItem {
+public class TimelineItemGroup: TimelineItem {
 	init(title: NSAttributedString, subtitle: NSAttributedString, items: [TimelineItem],
 		 shape: TimelineCard.ItemShape = .circle, icon: UIImage? = nil) {
 		

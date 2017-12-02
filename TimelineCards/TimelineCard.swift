@@ -31,7 +31,7 @@ import CoreGraphics
 
 /// All elements making up timeline source must comply with this protocol
 
-protocol TimelineSourceElement {
+public protocol TimelineSourceElement {
 	var id: UUID { get }
 	
 	var milestoneShape: TimelineCard.ItemShape { get set }
@@ -46,14 +46,14 @@ protocol TimelineSourceElement {
 
 /// Data source objects should implement this protocol
 
-protocol TimelineCardDataProvider {
+public protocol TimelineCardDataProvider {
 	func elementsForTimelineCard(_ timelineCard: TimelineCard,
 	                             containerWidth: CGFloat) -> [TimelineSourceElement]
 }
 
 /// Delegate objects should implement this protocol
 
-protocol TimelineCardEventsHandler {
+public protocol TimelineCardEventsHandler {
 	func didSelectElement(at index: Int, in timelineCard: TimelineCard)
 	func didSelectSubElement(at index: (Int, Int), in timelineCard: TimelineCard)
 	func didTouchHeaderView(_ headerView: UIView, in timelineCard: TimelineCard)
@@ -62,7 +62,7 @@ protocol TimelineCardEventsHandler {
 
 // Optional functions implementation in pure Swift (avoiding Obj-C)
 
-extension TimelineCardEventsHandler {
+public extension TimelineCardEventsHandler {
 	func didTouchHeaderView(_ headerView: UIView, in timelineCard: TimelineCard) { }
 	func didTouchFooterView(_ footerView: UIView, in timelineCard: TimelineCard) { }
 }
@@ -110,10 +110,10 @@ private class SimpleElementView: UIView {
 
 /// Self-drawn and self-layouted Timeline Card view that can be presented anywhere to show group of elements in order. Highly customizable. `TimelineCardDataProvider` and `TimelineCardEventsHandler` protocols must be implemented by user.
 
-class TimelineCard: UIView {
+public class TimelineCard: UIView {
 	// MARK: Types
 	
-	enum ItemShape {
+	public enum ItemShape {
 		case circle//, square, diamond
 	}
 	
@@ -155,7 +155,7 @@ class TimelineCard: UIView {
 	
 	// MARK: Card appearance
 	
-	override var backgroundColor: UIColor? {
+	override public var backgroundColor: UIColor? {
 		didSet {
 			super.backgroundColor = backgroundColor
 			setUpAppearance()
@@ -315,7 +315,7 @@ class TimelineCard: UIView {
 	///		- origin: Optional position of the card
 	/// 	- width: Static width of the card
 	
-	required init(origin: CGPoint = .zero, width: CGFloat) {
+	required public init(origin: CGPoint = .zero, width: CGFloat) {
 		super.init(frame: CGRect(x: origin.x, y: origin.y,
 		                         width: width, height: 0))
 		
@@ -323,13 +323,13 @@ class TimelineCard: UIView {
 		self.width = width
 	}
 	
-	required init?(coder aDecoder: NSCoder) {
+	required public init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
 	// MARK: Life cycle
 	
-	override func willMove(toSuperview newSuperview: UIView?) {
+	override public func willMove(toSuperview newSuperview: UIView?) {
 		super.willMove(toSuperview: newSuperview)
 		setUpAppearance()
 		reloadData()
@@ -783,7 +783,7 @@ class TimelineCard: UIView {
 	
 	// MARK: Touch events
 	
-	override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+	override public func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
 		guard let touch = touches.first else {
 			super.touchesBegan(touches, with: event)
 			return
