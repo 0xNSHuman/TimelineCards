@@ -42,7 +42,7 @@ public class TimelineItem: TimelineSourceElement {
 	public var customView: UIView?
 	public var icon: UIImage?
 	
-	init(title: NSAttributedString, subtitle: NSAttributedString,
+	public init(title: NSAttributedString, subtitle: NSAttributedString,
 	     shape: TimelineCard.ItemShape = .circle, icon: UIImage? = nil) {
 		
 		id = UUID()
@@ -53,7 +53,7 @@ public class TimelineItem: TimelineSourceElement {
 		self.icon = icon
 	}
 	
-	init(customView: UIView, shape: TimelineCard.ItemShape = .circle, icon: UIImage? = nil) {
+	public init(customView: UIView, shape: TimelineCard.ItemShape = .circle, icon: UIImage? = nil) {
 		id = UUID()
 		
 		self.milestoneShape = shape
@@ -65,7 +65,7 @@ public class TimelineItem: TimelineSourceElement {
 /// Extended version of `TimelineItem` that supports children.
 
 public class TimelineItemGroup: TimelineItem {
-	init(title: NSAttributedString, subtitle: NSAttributedString, items: [TimelineItem],
+	public init(title: NSAttributedString, subtitle: NSAttributedString, items: [TimelineItem],
 		 shape: TimelineCard.ItemShape = .circle, icon: UIImage? = nil) {
 		
 		super.init(title: title, subtitle: subtitle, shape: shape, icon: icon)
@@ -73,7 +73,7 @@ public class TimelineItemGroup: TimelineItem {
 		self.subelements = items
 	}
 	
-	init(customView: UIView, items: [TimelineItem], shape: TimelineCard.ItemShape = .circle, icon: UIImage? = nil) {
+	public init(customView: UIView, items: [TimelineItem], shape: TimelineCard.ItemShape = .circle, icon: UIImage? = nil) {
 		
 		super.init(customView: customView, shape: shape, icon: icon)
 		

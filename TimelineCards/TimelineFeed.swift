@@ -269,7 +269,7 @@ public class TimelineFeed: UIView, UITableViewDataSource, UITableViewDelegate, T
 	
 	// MARK: Appearance
 	
-	var paddingBetweenCards: CGFloat = 20.0 {
+	public var paddingBetweenCards: CGFloat = 20.0 {
 		didSet {
 			reloadData()
 		}
@@ -277,15 +277,15 @@ public class TimelineFeed: UIView, UITableViewDataSource, UITableViewDelegate, T
 	
 	// MARK: Source
 	
-	var dataSource: TimelineFeedDataSource? = nil
+	public var dataSource: TimelineFeedDataSource? = nil
 	
 	// MARK: Delegate
 	
-	var delegate: TimelineFeedDelegate? = nil
+	public var delegate: TimelineFeedDelegate? = nil
 	
 	// MARK: Initializers
 	
-	override init(frame: CGRect) {
+	public override init(frame: CGRect) {
 		super.init(frame: frame)
 		
 		backgroundColor = .clear
@@ -317,7 +317,7 @@ public class TimelineFeed: UIView, UITableViewDataSource, UITableViewDelegate, T
 	
 	// MARK: Displaying data
 	
-	func reloadData() {
+	public func reloadData() {
 		guard let _ = dataSource else { return }
 		cardsContainer.reloadData()
 	}

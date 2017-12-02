@@ -141,7 +141,7 @@ public class TimelineCard: UIView {
 	// MARK: Source
 	
 	// TODO: Should it be limited to class and be weak?
-	var dataProvider: TimelineCardDataProvider? = nil
+	public var dataProvider: TimelineCardDataProvider? = nil
 	
 	var source: [TimelineSourceElement] = [] {
 		didSet {
@@ -151,7 +151,7 @@ public class TimelineCard: UIView {
 	
 	// MARK: Events delivery
 	
-	var eventsHandler: TimelineCardEventsHandler? = nil
+	public var eventsHandler: TimelineCardEventsHandler? = nil
 	
 	// MARK: Card appearance
 	
@@ -162,13 +162,13 @@ public class TimelineCard: UIView {
 		}
 	}
 	
-	var cornerRadius: CGFloat = 20.0 {
+	public var cornerRadius: CGFloat = 20.0 {
 		didSet {
 			setUpAppearance()
 		}
 	}
 	
-	var borderAppearance: (UIColor, CGFloat) = (.lightGray, 1.0) {
+	public var borderAppearance: (UIColor, CGFloat) = (.lightGray, 1.0) {
 		didSet {
 			setUpAppearance()
 		}
@@ -183,7 +183,7 @@ public class TimelineCard: UIView {
 	
 	// MARK: Content appearance
 	
-	var timelineWidth: CGFloat {
+	public var timelineWidth: CGFloat {
 		return CGFloat.maximum(itemShapeHeight, CGFloat.maximum(subItemShapeHeight, groupItemShapeHeight))
 	}
 	
@@ -196,87 +196,87 @@ public class TimelineCard: UIView {
 		return CGSize(width: width, height: bounds.height - (headerView?.bounds.height ?? 0.0) - (footerView?.bounds.height ?? 0.0))
 	}
 	
-	var itemShapeHeight: CGFloat = 40.0 {
+	public var itemShapeHeight: CGFloat = 40.0 {
 		didSet {
 			if autoreload { reload() }
 		}
 	}
 	
-	var subItemShapeHeight: CGFloat = 30.0 {
+	public var subItemShapeHeight: CGFloat = 30.0 {
 		didSet {
 			if autoreload { reload() }
 		}
 	}
 	
-	var groupItemShapeHeight: CGFloat = 50.0 {
+	public var groupItemShapeHeight: CGFloat = 50.0 {
 		didSet {
 			if autoreload { reload() }
 		}
 	}
 	
-	var itemIconScaleFactor: CGFloat = 0.65 {
+	public var itemIconScaleFactor: CGFloat = 0.65 {
 		didSet {
 			if autoreload { reload() }
 		}
 	}
 	
-	var lineColor: UIColor = .darkGray {
+	public var lineColor: UIColor = .darkGray {
 		didSet {
 			if autoreload { reload() }
 		}
 	}
 	
-	var timelinePathWidth: CGFloat = 2.0 {
+	public var timelinePathWidth: CGFloat = 2.0 {
 		didSet {
 			if autoreload { reload() }
 		}
 	}
 	
-	var titleHeight: CGFloat = 30.0 {
+	public var titleHeight: CGFloat = 30.0 {
 		didSet {
 			if autoreload { reload() }
 		}
 	}
 	
-	var subtitleHeight: CGFloat = 20.0 {
+	public var subtitleHeight: CGFloat = 20.0 {
 		didSet {
 			if autoreload { reload() }
 		}
 	}
 	
-	var margins: (CGFloat, CGFloat, CGFloat, CGFloat) = (20.0, 20.0, 20.0, 20.0) {
+	public var margins: (CGFloat, CGFloat, CGFloat, CGFloat) = (20.0, 20.0, 20.0, 20.0) {
 		didSet {
 			if autoreload { reload() }
 		}
 	}
 	
-	var headerView: UIView? = nil {
+	public var headerView: UIView? = nil {
 		didSet {
 			headerView?.clipsToBounds = true
 			if autoreload { reload() }
 		}
 	}
 	
-	var footerView: UIView? = nil {
+	public var footerView: UIView? = nil {
 		didSet {
 			footerView?.clipsToBounds = true
 			if autoreload { reload() }
 		}
 	}
 	
-	var paddingBetweenItems: CGFloat = 10.0 {
+	public var paddingBetweenItems: CGFloat = 10.0 {
 		didSet {
 			if autoreload { reload() }
 		}
 	}
 	
-	var paddingBetweenSubItems: CGFloat = 10.0 {
+	public var paddingBetweenSubItems: CGFloat = 10.0 {
 		didSet {
 			if autoreload { reload() }
 		}
 	}
 	
-	var paddingAroundItemGroup: CGFloat = 40.0 {
+	public var paddingAroundItemGroup: CGFloat = 40.0 {
 		didSet {
 			if autoreload { reload() }
 		}
@@ -292,7 +292,7 @@ public class TimelineCard: UIView {
 
 	/// Whether or not card should automatically rebuild itself after one of appearance properties was updated. Default value is true. When false, explicit call of `reload()` method is necessary.
 	
-	var autoreload: Bool = true {
+	public var autoreload: Bool = true {
 		didSet {
 			if autoreload { reload() }
 		}
@@ -335,7 +335,7 @@ public class TimelineCard: UIView {
 		reloadData()
 	}
 	
-	func reloadData() {
+	public func reloadData() {
 		guard let provider = dataProvider else { return }
 		source = provider.elementsForTimelineCard(self, containerWidth: descriptionContentWidthLimit)
 		
@@ -474,7 +474,7 @@ public class TimelineCard: UIView {
 	
 	/// Rebuilds timeline from scratch, without reloading data.
 	
-	func reload() {
+	public func reload() {
 		cleanUp()
 		
 		layoutIfNeeded()
