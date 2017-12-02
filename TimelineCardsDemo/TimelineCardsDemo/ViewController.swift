@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import TimelineCards
 
 class ViewController: UIViewController, TimelineFeedDataSource, TimelineFeedDelegate {
 	// MARK: Properties

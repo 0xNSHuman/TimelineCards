@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03382A342AB243749140CCA1 /* Pods_TimelineCardsDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A323A03BD58B9D330471044 /* Pods_TimelineCardsDemo.framework */; };
 		FF0F01F41FD04DFB00FC8494 /* TestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0F01F31FD04DFB00FC8494 /* TestModel.swift */; };
 		FF0F01F61FD0570100FC8494 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0F01F51FD0570100FC8494 /* Utils.swift */; };
 		FF0F01FE1FD0625B00FC8494 /* icon_0.png in Resources */ = {isa = PBXBuildFile; fileRef = FF0F01F91FD0625A00FC8494 /* icon_0.png */; };
@@ -22,17 +23,21 @@
 		FF0F020F1FD1793600FC8494 /* sample_bg_0.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FF0F020D1FD1793500FC8494 /* sample_bg_0.jpg */; };
 		FF0F02101FD1793600FC8494 /* sample_bg_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FF0F020E1FD1793500FC8494 /* sample_bg_1.jpg */; };
 		FF40B24B1FD27871002EC179 /* ORBVisualTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = FF40B24A1FD27870002EC179 /* ORBVisualTimer.m */; };
-		FF85EA981FCED08D00C60CC7 /* TimelineFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF85EA971FCED08D00C60CC7 /* TimelineFeed.swift */; };
-		FFD8A2D21FCC652D00C5C97C /* TimelineItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD8A2D11FCC652D00C5C97C /* TimelineItem.swift */; };
+		FFDF348D1FD2E9FE00BD741F /* TimelineCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDF348A1FD2E9FD00BD741F /* TimelineCard.swift */; };
+		FFDF348E1FD2E9FE00BD741F /* TimelineFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDF348B1FD2E9FD00BD741F /* TimelineFeed.swift */; };
+		FFDF348F1FD2E9FE00BD741F /* TimelineItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDF348C1FD2E9FD00BD741F /* TimelineItem.swift */; };
+		FFDF34911FD2EAEE00BD741F /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FFDF34901FD2EAEE00BD741F /* Info.plist */; };
 		FFF90BF91FCC3778006B16B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF90BF81FCC3778006B16B2 /* AppDelegate.swift */; };
 		FFF90BFB1FCC3778006B16B2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF90BFA1FCC3778006B16B2 /* ViewController.swift */; };
 		FFF90BFE1FCC3778006B16B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFF90BFC1FCC3778006B16B2 /* Main.storyboard */; };
 		FFF90C001FCC3778006B16B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFF90BFF1FCC3778006B16B2 /* Assets.xcassets */; };
 		FFF90C031FCC3778006B16B2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFF90C011FCC3778006B16B2 /* LaunchScreen.storyboard */; };
-		FFF90C0C1FCC386E006B16B2 /* TimelineCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF90C0B1FCC37B7006B16B2 /* TimelineCard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A323A03BD58B9D330471044 /* Pods_TimelineCardsDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TimelineCardsDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		13F0ED36CD1901ED23A8FA1B /* Pods-TimelineCardsDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimelineCardsDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-TimelineCardsDemo/Pods-TimelineCardsDemo.release.xcconfig"; sourceTree = "<group>"; };
+		C0110D077C424DFD5570ED35 /* Pods-TimelineCardsDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimelineCardsDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TimelineCardsDemo/Pods-TimelineCardsDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		FF0F01F31FD04DFB00FC8494 /* TestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestModel.swift; sourceTree = "<group>"; };
 		FF0F01F51FD0570100FC8494 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		FF0F01F91FD0625A00FC8494 /* icon_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_0.png; sourceTree = "<group>"; };
@@ -50,16 +55,16 @@
 		FF40B2491FD27870002EC179 /* ORBVisualTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ORBVisualTimer.h; sourceTree = "<group>"; };
 		FF40B24A1FD27870002EC179 /* ORBVisualTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ORBVisualTimer.m; sourceTree = "<group>"; };
 		FF40B24C1FD278F9002EC179 /* TimelineCardsDemo-BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TimelineCardsDemo-BridgingHeader.h"; sourceTree = "<group>"; };
-		FF85EA971FCED08D00C60CC7 /* TimelineFeed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineFeed.swift; sourceTree = "<group>"; };
-		FFD8A2D11FCC652D00C5C97C /* TimelineItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineItem.swift; sourceTree = "<group>"; };
+		FFDF348A1FD2E9FD00BD741F /* TimelineCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineCard.swift; sourceTree = "<group>"; };
+		FFDF348B1FD2E9FD00BD741F /* TimelineFeed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineFeed.swift; sourceTree = "<group>"; };
+		FFDF348C1FD2E9FD00BD741F /* TimelineItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineItem.swift; sourceTree = "<group>"; };
+		FFDF34901FD2EAEE00BD741F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FFF90BF51FCC3778006B16B2 /* TimelineCardsDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimelineCardsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFF90BF81FCC3778006B16B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FFF90BFA1FCC3778006B16B2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FFF90BFD1FCC3778006B16B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FFF90BFF1FCC3778006B16B2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FFF90C021FCC3778006B16B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		FFF90C041FCC3778006B16B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FFF90C0B1FCC37B7006B16B2 /* TimelineCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineCard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,12 +72,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03382A342AB243749140CCA1 /* Pods_TimelineCardsDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4BAA6B077A3CC457C9025F93 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C0110D077C424DFD5570ED35 /* Pods-TimelineCardsDemo.debug.xcconfig */,
+				13F0ED36CD1901ED23A8FA1B /* Pods-TimelineCardsDemo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		922E05B9E11356FBC7830738 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0A323A03BD58B9D330471044 /* Pods_TimelineCardsDemo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		FF0F01F71FD0625A00FC8494 /* Res */ = {
 			isa = PBXGroup;
 			children = (
@@ -116,12 +139,25 @@
 			path = ORBVisualTimer;
 			sourceTree = "<group>";
 		};
+		FFDF34891FD2E9FD00BD741F /* TimelineCards */ = {
+			isa = PBXGroup;
+			children = (
+				FFDF348A1FD2E9FD00BD741F /* TimelineCard.swift */,
+				FFDF348B1FD2E9FD00BD741F /* TimelineFeed.swift */,
+				FFDF348C1FD2E9FD00BD741F /* TimelineItem.swift */,
+			);
+			name = TimelineCards;
+			path = ../TimelineCards;
+			sourceTree = "<group>";
+		};
 		FFF90BEC1FCC3777006B16B2 = {
 			isa = PBXGroup;
 			children = (
-				FFF90C0A1FCC37B7006B16B2 /* TimelineCards */,
+				FFDF34891FD2E9FD00BD741F /* TimelineCards */,
 				FFF90BF71FCC3778006B16B2 /* TimelineCardsDemo */,
 				FFF90BF61FCC3778006B16B2 /* Products */,
+				4BAA6B077A3CC457C9025F93 /* Pods */,
+				922E05B9E11356FBC7830738 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -143,24 +179,13 @@
 				FF0F02091FD1385A00FC8494 /* DetailsViewController.swift */,
 				FFF90BFC1FCC3778006B16B2 /* Main.storyboard */,
 				FFF90BFF1FCC3778006B16B2 /* Assets.xcassets */,
+				FFDF34901FD2EAEE00BD741F /* Info.plist */,
 				FFF90C011FCC3778006B16B2 /* LaunchScreen.storyboard */,
-				FFF90C041FCC3778006B16B2 /* Info.plist */,
 				FF0F01F31FD04DFB00FC8494 /* TestModel.swift */,
 				FF0F01F51FD0570100FC8494 /* Utils.swift */,
 				FF40B24C1FD278F9002EC179 /* TimelineCardsDemo-BridgingHeader.h */,
 			);
 			path = TimelineCardsDemo;
-			sourceTree = "<group>";
-		};
-		FFF90C0A1FCC37B7006B16B2 /* TimelineCards */ = {
-			isa = PBXGroup;
-			children = (
-				FFD8A2D11FCC652D00C5C97C /* TimelineItem.swift */,
-				FFF90C0B1FCC37B7006B16B2 /* TimelineCard.swift */,
-				FF85EA971FCED08D00C60CC7 /* TimelineFeed.swift */,
-			);
-			name = TimelineCards;
-			path = ../TimelineCards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -170,9 +195,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FFF90C071FCC3778006B16B2 /* Build configuration list for PBXNativeTarget "TimelineCardsDemo" */;
 			buildPhases = (
+				FAA0C34C0D2A4ABAC7F9C7F6 /* [CP] Check Pods Manifest.lock */,
 				FFF90BF11FCC3778006B16B2 /* Sources */,
 				FFF90BF21FCC3778006B16B2 /* Frameworks */,
 				FFF90BF31FCC3778006B16B2 /* Resources */,
+				B74C189B2DE3CAC845736715 /* [CP] Embed Pods Frameworks */,
+				7CB40A98384815176C8012B6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -230,6 +258,7 @@
 				FFF90C001FCC3778006B16B2 /* Assets.xcassets in Resources */,
 				FF0F02081FD1325400FC8494 /* proceed.png in Resources */,
 				FF0F02041FD1235200FC8494 /* three_dots.png in Resources */,
+				FFDF34911FD2EAEE00BD741F /* Info.plist in Resources */,
 				FF0F02001FD0625B00FC8494 /* icon_2.png in Resources */,
 				FFF90BFE1FCC3778006B16B2 /* Main.storyboard in Resources */,
 				FF0F02011FD0625B00FC8494 /* icon_3.png in Resources */,
@@ -241,19 +270,67 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		7CB40A98384815176C8012B6 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TimelineCardsDemo/Pods-TimelineCardsDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B74C189B2DE3CAC845736715 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TimelineCardsDemo/Pods-TimelineCardsDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FAA0C34C0D2A4ABAC7F9C7F6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		FFF90BF11FCC3778006B16B2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FFD8A2D21FCC652D00C5C97C /* TimelineItem.swift in Sources */,
-				FF85EA981FCED08D00C60CC7 /* TimelineFeed.swift in Sources */,
+				FFDF348E1FD2E9FE00BD741F /* TimelineFeed.swift in Sources */,
 				FFF90BFB1FCC3778006B16B2 /* ViewController.swift in Sources */,
 				FF0F020A1FD1385A00FC8494 /* DetailsViewController.swift in Sources */,
+				FFDF348F1FD2E9FE00BD741F /* TimelineItem.swift in Sources */,
+				FFDF348D1FD2E9FE00BD741F /* TimelineCard.swift in Sources */,
 				FF40B24B1FD27871002EC179 /* ORBVisualTimer.m in Sources */,
 				FF0F01F61FD0570100FC8494 /* Utils.swift in Sources */,
 				FF0F01F41FD04DFB00FC8494 /* TestModel.swift in Sources */,
-				FFF90C0C1FCC386E006B16B2 /* TimelineCard.swift in Sources */,
 				FFF90BF91FCC3778006B16B2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -389,13 +466,15 @@
 		};
 		FFF90C081FCC3778006B16B2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C0110D077C424DFD5570ED35 /* Pods-TimelineCardsDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T55G7JLVK5;
-				INFOPLIST_FILE = TimelineCardDemo/Info.plist;
+				INFOPLIST_FILE = TimelineCardsDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.vladaverin.TimelineCardDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vladaverin.TimelineCardsDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "TimelineCardsDemo/TimelineCardsDemo-BridgingHeader.h";
 				SWIFT_VERSION = 4.0;
@@ -405,13 +484,15 @@
 		};
 		FFF90C091FCC3778006B16B2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 13F0ED36CD1901ED23A8FA1B /* Pods-TimelineCardsDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T55G7JLVK5;
-				INFOPLIST_FILE = TimelineCardDemo/Info.plist;
+				INFOPLIST_FILE = TimelineCardsDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.vladaverin.TimelineCardDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vladaverin.TimelineCardsDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "TimelineCardsDemo/TimelineCardsDemo-BridgingHeader.h";
 				SWIFT_VERSION = 4.0;

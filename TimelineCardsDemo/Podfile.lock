@@ -1,0 +1,12 @@
+PODS:
+  - TimelineCards (1.0)
+
+DEPENDENCIES:
+  - TimelineCards
+
+SPEC CHECKSUMS:
+  TimelineCards: 31aae377ab3d5b2880322db4a87258f0b67249a3
+
+PODFILE CHECKSUM: 999f54a798def3ac83b084353b817d40ff95ef81
+
+COCOAPODS: 1.1.1

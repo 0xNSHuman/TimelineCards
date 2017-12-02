@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import TimelineCards
 
 class DetailsViewController: UIViewController, TimelineCardDataProvider, TimelineCardEventsHandler {
 	// MARK: Outlets
