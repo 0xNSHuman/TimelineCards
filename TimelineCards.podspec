@@ -22,5 +22,6 @@ Pod::Spec.new do |s|
   s.frameworks  = "UIKit", "CoreGraphics"
 
   s.requires_arc = true
+  s.pod_target_xcconfig = { 'OTHER_SWIFT_FLAGS[config=Debug]' => '-D DEBUG' }
 
 end
