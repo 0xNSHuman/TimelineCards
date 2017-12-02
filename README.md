@@ -25,7 +25,7 @@
 ### CocoaPods ([wtf is that?](https://cocoapods.org/about))
 1. Add `pod 'TimelineCards'` to your `Podfile`;
 2. Then run `pod update` in Terminal;
-3. Re-open your project using `.xcworkspace`, put `import TimelineCards` in the swift files you plan to create awesome cards from;
+3. Re-open your project using `.xcworkspace`, put `import TimelineCards` in the swift files you plan to create awesome cards from (or use bridging in Obj-C projects);
 4. Rebuild and enjoy.
 
 ### Old School Way
@@ -101,7 +101,7 @@ First, make your data provider comply with `TimelineCardDataProvider` and `Timel
 
 ##### Implementing `TimelineCardDataProvider`
 
-Now, let's send some data to your card when it requests so. You do this by creating array consisting of `TimelineItem` and/or `TimelineItemGroup` objects, which are the main data units that you use in **TimelineCards** kit. They both conmply with `TimelineSourceElement` protocol — type that you must return in result.
+Now, let's send some data to your card when it requests so. You do this by creating array consisting of `TimelineItem` and/or `TimelineItemGroup` objects, which are the main data units that you use in **TimelineCards** kit. They both comply with `TimelineSourceElement` protocol — type that you must return in result.
 
 ```
 func elementsForTimelineCard(_ timelineCard: TimelineCard, containerWidth: CGFloat) -> [TimelineSourceElement] {
@@ -204,7 +204,6 @@ timelineFeed.paddingBetweenCards = 20.0
 view.addSubview(timelineFeed)
 timelineFeed.reloadData()
 ```
-Height of the card will be calculated automatically based on its data source, and available after `reloadData()` method execution, or after card is added to superview.
 
 #### Data Source and Events Handling
 
