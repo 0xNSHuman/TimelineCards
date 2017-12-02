@@ -105,25 +105,25 @@ Now, let's send some data to your card when it requests so. You do this by creat
 
 ```
 func elementsForTimelineCard(_ timelineCard: TimelineCard, containerWidth: CGFloat) -> [TimelineSourceElement] {
-var cardSource = [] as [TimelineSourceElement]
+	var cardSource = [] as [TimelineSourceElement]
 
-for someData in myDataModel.objects {
-if someData.isGroup {
-var childTimelineItems = [TimelineItem]()
-for childData in someData.children {
-let timelineItem = TimelineItem(...)
-childTimelineItems.append(timelineItem)
-}
+	for someData in myDataModel.objects {
+		if someData.isGroup {
+			var childTimelineItems = [TimelineItem]()
+			for childData in someData.children {
+				let timelineItem = TimelineItem(...)
+				childTimelineItems.append(timelineItem)
+			}
 
-let timelineItemGroup = TimelineItemGroup(...)
-cardSource.append(timelineItemGroup)
-} else {
-let timelineItem = TimelineItem(...)
-cardSource.append(timelineItem)
-}
-}
+			let timelineItemGroup = TimelineItemGroup(...)
+			cardSource.append(timelineItemGroup)
+		} else {
+			let timelineItem = TimelineItem(...)
+			cardSource.append(timelineItem)
+		}
+	}
 
-return cardSource
+	return cardSource
 }
 ```
 
@@ -187,7 +187,7 @@ Cards Feed is represented by `TimelineFeed` view, which is basically a vertical 
 </p>
 
 #### Creation
-Initialize new `TimelineFeed object` and set its `dataSource` and `delegate`:
+Initialize new `TimelineFeed` object and set its `dataSource` and `delegate`:
 
 ```
 let timelineWidth: CGFloat = view.bounds.width * 0.8
@@ -216,7 +216,7 @@ Start with method that tells feed how many cards you want it to present:
 
 ```
 func numberOfCards(in timelineFeed: TimelineFeed) -> Int {
-return timelinesCollection.items.count
+	return timelinesCollection.items.count
 }
 ```
 
@@ -224,9 +224,9 @@ Now, let's initialize new card every time feed asks us to for given index:
 
 ```
 func card(at index: Int, in timelineFeed: TimelineFeed) -> TimelineCard {
-let timelineCard = TimelineCard(width: timelineFeed.bounds.width)
-// Customize as you'd do with Single Card
-return timelineCard
+	let timelineCard = TimelineCard(width: timelineFeed.bounds.width)
+	// Customize as you'd do with Single Card
+	return timelineCard
 }
 ```
 **Note**: *DO NOT set `dataProvider` or `eventHandler` for `TimelineCard` object here. `TimelineFeed` is responsible for this*.
@@ -235,11 +235,11 @@ Good! Now, whenever particular card is about to be reused in feed, it will kindl
 
 ```
 func elementsForTimelineCard(at index: Int, containerWidth: CGFloat) -> [TimelineSourceElement] {
-var elements = [] as [TimelineSourceElement]
+	var elements = [] as [TimelineSourceElement]
 
-// Creating those `TimelineItem` and/or `TimelineItemGroup` objects..
+	// Creating those `TimelineItem` and/or `TimelineItemGroup` objects..
 
-return elements
+	return elements
 }
 ```
 
@@ -250,16 +250,16 @@ Ok, cards are set up and running smoothly, but you can also add headers on top o
 ```
 func titleAndSubtitle(at index: Int, in timelineFeed: TimelineFeed) -> (NSAttributedString, NSAttributedString?)? {
 
-let timelineData = timelinesCollection.items[index]
+	let timelineData = timelinesCollection.items[index]
 
-let testTitle = NSAttributedString(string: "Timeline Card #\(index)", attributes: [.foregroundColor : UIColor.white, .font : UIFont(name: "HelveticaNeue-Bold", size: 23.0)])
+	let testTitle = NSAttributedString(string: "Timeline Card #\(index)", attributes: [.foregroundColor : UIColor.white, .font : UIFont(name: "HelveticaNeue-Bold", size: 23.0)])
 
-let testSubtitle = NSAttributedString(string: "Subtitle text", attributes: [.foregroundColor : UIColor.white])
+	let testSubtitle = NSAttributedString(string: "Subtitle text", attributes: [.foregroundColor : UIColor.white])
 
-return (testTitle, testSubtitle)
+	return (testTitle, testSubtitle)
 
-// Subtitle is optional
-//return (testTitle, nil)
+	// Subtitle is optional
+	//return (testTitle, nil)
 }
 ```
 
@@ -267,10 +267,9 @@ return (testTitle, testSubtitle)
 
 ```
 func headerViewForCard(at index: Int, in timelineFeed: TimelineFeed) -> UIView? {
-let customHeader = UIView(frame: CGRect(x: 0, y: 0, width:
-timelineFeed.bounds.width, height: 60.0))
-customHeader.backgroundColor = .purple
-return customHeader
+	let customHeader = UIView(frame: CGRect(x: 0, y: 0, width: timelineFeed.bounds.width, height: 60.0))
+	customHeader.backgroundColor = .purple
+	return customHeader
 }
 ```
 
