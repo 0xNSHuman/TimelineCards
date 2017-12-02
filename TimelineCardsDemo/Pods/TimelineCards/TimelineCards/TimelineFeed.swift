@@ -30,7 +30,7 @@ import UIKit
 
 /// Protocol that `TimelineFeed` uses to create `TimelineCard`s, populate them with data, and then reuse when needed. Must be implemented by data source in order to present feed of cards.
 
-protocol TimelineFeedDataSource {
+public protocol TimelineFeedDataSource {
 	func numberOfCards(in timelineFeed: TimelineFeed) -> Int
 	func card(at index: Int, in timelineFeed: TimelineFeed) -> TimelineCard
 	func elementsForTimelineCard(at index: Int, containerWidth: CGFloat) -> [TimelineSourceElement]
@@ -42,7 +42,7 @@ protocol TimelineFeedDataSource {
 
 // Optional protocol methods implementation for pure Swift
 
-extension TimelineFeedDataSource {
+public extension TimelineFeedDataSource {
 	func titleAndSubtitle(at index: Int,
 	                      in timelineFeed: TimelineFeed) -> (NSAttributedString, NSAttributedString?)? {
 		return nil
@@ -55,7 +55,7 @@ extension TimelineFeedDataSource {
 
 /// Protocol that `TimelineFeed` uses to deliver events from cards. Must be implemented by delegate in order to handle interaction, such as touch events coming from users.
 
-protocol TimelineFeedDelegate {
+public protocol TimelineFeedDelegate {
 	func didSelectElement(at index: Int, timelineCardIndex: Int)
 	func didSelectSubElement(at index: (Int, Int), timelineCardIndex: Int)
 	func didTouchHeaderView(_ headerView: UIView, timelineCardIndex: Int)
@@ -64,14 +64,14 @@ protocol TimelineFeedDelegate {
 
 // Optional protocol methods implementation for pure Swift
 
-extension TimelineFeedDelegate {
+public extension TimelineFeedDelegate {
 	func didTouchHeaderView(_ headerView: UIView, timelineCardIndex: Int) { }
 	func didTouchFooterView(_ footerView: UIView, timelineCardIndex: Int) { }
 }
 
 /// Simple view that's used by `TimelineFeed` by default in cases when titile and subtitle are enough to describe a single card in feed.
 
-private class SimpleTimelineItemHeader: UIView {
+fileprivate class SimpleTimelineItemHeader: UIView {
 	// MARK: Constants
 	
 	static let defaultHeight: CGFloat = 60.0
@@ -120,7 +120,7 @@ private class SimpleTimelineItemHeader: UIView {
 
 /// Part of internal structure handling feed presentation and reusability.
 
-private class TimelineFeedCell: UITableViewCell {
+fileprivate class TimelineFeedCell: UITableViewCell {
 	// MARK: Subviews
 	
 	private(set) var headerView: UIView? = nil
@@ -262,14 +262,14 @@ private class TimelineFeedCell: UITableViewCell {
 
 /// Vertically layouted feed with `TimelineCard` objects presented. It uses table view internally to offer memory-efficient reusability, which makes it possible to build feed consisting of large amount of cards (for example, one card per day and total of 365 cards in feed).
 
-class TimelineFeed: UIView, UITableViewDataSource, UITableViewDelegate, TimelineCardEventsHandler {
+public class TimelineFeed: UIView, UITableViewDataSource, UITableViewDelegate, TimelineCardEventsHandler {
 	// MARK: Properties
 	
 	private var cardsContainer = UITableView()
 	
 	// MARK: Appearance
 	
-	var paddingBetweenCards: CGFloat = 20.0 {
+	public var paddingBetweenCards: CGFloat = 20.0 {
 		didSet {
 			reloadData()
 		}
@@ -277,15 +277,15 @@ class TimelineFeed: UIView, UITableViewDataSource, UITableViewDelegate, Timeline
 	
 	// MARK: Source
 	
-	var dataSource: TimelineFeedDataSource? = nil
+	public var dataSource: TimelineFeedDataSource? = nil
 	
 	// MARK: Delegate
 	
-	var delegate: TimelineFeedDelegate? = nil
+	public var delegate: TimelineFeedDelegate? = nil
 	
 	// MARK: Initializers
 	
-	override init(frame: CGRect) {
+	public override init(frame: CGRect) {
 		super.init(frame: frame)
 		
 		backgroundColor = .clear
@@ -305,35 +305,35 @@ class TimelineFeed: UIView, UITableViewDataSource, UITableViewDelegate, Timeline
 		addSubview(cardsContainer)
 	}
 	
-	required init?(coder aDecoder: NSCoder) {
+	required public init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
 	// MARK: Life cycle
 	
-	override func willMove(toSuperview newSuperview: UIView?) {
+	override public func willMove(toSuperview newSuperview: UIView?) {
 		super.willMove(toSuperview: newSuperview)
 	}
 	
 	// MARK: Displaying data
 	
-	func reloadData() {
+	public func reloadData() {
 		guard let _ = dataSource else { return }
 		cardsContainer.reloadData()
 	}
 	
 	// MARK: UITableViewDataSource
 	
-	func numberOfSections(in tableView: UITableView) -> Int {
+	public func numberOfSections(in tableView: UITableView) -> Int {
 		return 1
 	}
 	
-	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+	public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		guard let dataSource = dataSource else { return 0 }
 		return Int(dataSource.numberOfCards(in: self))
 	}
 	
-	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+	public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TimelineFeedCell.self), for: indexPath) as! TimelineFeedCell
 		
 		guard let dataSource = dataSource else { return cell }
@@ -362,31 +362,31 @@ class TimelineFeed: UIView, UITableViewDataSource, UITableViewDelegate, Timeline
 	
 	// MARK: UITableViewDelegate
 	
-	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+	public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		tableView.deselectRow(at: indexPath, animated: false)
 	}
 	
 	// MARK: TimelineCardEventsHandler
 	
-	func didSelectElement(at index: Int, in timelineCard: TimelineCard) {
+	public func didSelectElement(at index: Int, in timelineCard: TimelineCard) {
 		guard let cell = (cardsContainer.visibleCells as? [TimelineFeedCell])?.flatMap({ return $0.card == timelineCard ? $0 : nil }).first, let cardIndex = cardsContainer.indexPath(for: cell)?.row else { return }
 		
 		delegate?.didSelectElement(at: index, timelineCardIndex: cardIndex)
 	}
 	
-	func didSelectSubElement(at index: (Int, Int), in timelineCard: TimelineCard) {
+	public func didSelectSubElement(at index: (Int, Int), in timelineCard: TimelineCard) {
 		guard let cell = (cardsContainer.visibleCells as? [TimelineFeedCell])?.flatMap({ return $0.card == timelineCard ? $0 : nil }).first, let cardIndex = cardsContainer.indexPath(for: cell)?.row else { return }
 		
 		delegate?.didSelectSubElement(at: index, timelineCardIndex: cardIndex)
 	}
 	
-	func didTouchHeaderView(_ headerView: UIView, in timelineCard: TimelineCard) {
+	public func didTouchHeaderView(_ headerView: UIView, in timelineCard: TimelineCard) {
 		guard let cell = (cardsContainer.visibleCells as? [TimelineFeedCell])?.flatMap({ return $0.card == timelineCard ? $0 : nil }).first, let cardIndex = cardsContainer.indexPath(for: cell)?.row else { return }
 		
 		delegate?.didTouchHeaderView(headerView, timelineCardIndex: cardIndex)
 	}
 	
-	func didTouchFooterView(_ footerView: UIView, in timelineCard: TimelineCard) {
+	public func didTouchFooterView(_ footerView: UIView, in timelineCard: TimelineCard) {
 		guard let cell = (cardsContainer.visibleCells as? [TimelineFeedCell])?.flatMap({ return $0.card == timelineCard ? $0 : nil }).first, let cardIndex = cardsContainer.indexPath(for: cell)?.row else { return }
 		
 		delegate?.didTouchFooterView(footerView, timelineCardIndex: cardIndex)

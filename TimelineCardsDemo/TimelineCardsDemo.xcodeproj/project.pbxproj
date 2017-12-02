@@ -23,9 +23,6 @@
 		FF0F020F1FD1793600FC8494 /* sample_bg_0.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FF0F020D1FD1793500FC8494 /* sample_bg_0.jpg */; };
 		FF0F02101FD1793600FC8494 /* sample_bg_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FF0F020E1FD1793500FC8494 /* sample_bg_1.jpg */; };
 		FF40B24B1FD27871002EC179 /* ORBVisualTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = FF40B24A1FD27870002EC179 /* ORBVisualTimer.m */; };
-		FFDF348D1FD2E9FE00BD741F /* TimelineCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDF348A1FD2E9FD00BD741F /* TimelineCard.swift */; };
-		FFDF348E1FD2E9FE00BD741F /* TimelineFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDF348B1FD2E9FD00BD741F /* TimelineFeed.swift */; };
-		FFDF348F1FD2E9FE00BD741F /* TimelineItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDF348C1FD2E9FD00BD741F /* TimelineItem.swift */; };
 		FFDF34911FD2EAEE00BD741F /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FFDF34901FD2EAEE00BD741F /* Info.plist */; };
 		FFF90BF91FCC3778006B16B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF90BF81FCC3778006B16B2 /* AppDelegate.swift */; };
 		FFF90BFB1FCC3778006B16B2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF90BFA1FCC3778006B16B2 /* ViewController.swift */; };
@@ -55,9 +52,6 @@
 		FF40B2491FD27870002EC179 /* ORBVisualTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ORBVisualTimer.h; sourceTree = "<group>"; };
 		FF40B24A1FD27870002EC179 /* ORBVisualTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ORBVisualTimer.m; sourceTree = "<group>"; };
 		FF40B24C1FD278F9002EC179 /* TimelineCardsDemo-BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TimelineCardsDemo-BridgingHeader.h"; sourceTree = "<group>"; };
-		FFDF348A1FD2E9FD00BD741F /* TimelineCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineCard.swift; sourceTree = "<group>"; };
-		FFDF348B1FD2E9FD00BD741F /* TimelineFeed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineFeed.swift; sourceTree = "<group>"; };
-		FFDF348C1FD2E9FD00BD741F /* TimelineItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineItem.swift; sourceTree = "<group>"; };
 		FFDF34901FD2EAEE00BD741F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FFF90BF51FCC3778006B16B2 /* TimelineCardsDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimelineCardsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFF90BF81FCC3778006B16B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -139,21 +133,9 @@
 			path = ORBVisualTimer;
 			sourceTree = "<group>";
 		};
-		FFDF34891FD2E9FD00BD741F /* TimelineCards */ = {
-			isa = PBXGroup;
-			children = (
-				FFDF348A1FD2E9FD00BD741F /* TimelineCard.swift */,
-				FFDF348B1FD2E9FD00BD741F /* TimelineFeed.swift */,
-				FFDF348C1FD2E9FD00BD741F /* TimelineItem.swift */,
-			);
-			name = TimelineCards;
-			path = ../TimelineCards;
-			sourceTree = "<group>";
-		};
 		FFF90BEC1FCC3777006B16B2 = {
 			isa = PBXGroup;
 			children = (
-				FFDF34891FD2E9FD00BD741F /* TimelineCards */,
 				FFF90BF71FCC3778006B16B2 /* TimelineCardsDemo */,
 				FFF90BF61FCC3778006B16B2 /* Products */,
 				4BAA6B077A3CC457C9025F93 /* Pods */,
@@ -323,11 +305,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FFDF348E1FD2E9FE00BD741F /* TimelineFeed.swift in Sources */,
 				FFF90BFB1FCC3778006B16B2 /* ViewController.swift in Sources */,
 				FF0F020A1FD1385A00FC8494 /* DetailsViewController.swift in Sources */,
-				FFDF348F1FD2E9FE00BD741F /* TimelineItem.swift in Sources */,
-				FFDF348D1FD2E9FE00BD741F /* TimelineCard.swift in Sources */,
 				FF40B24B1FD27871002EC179 /* ORBVisualTimer.m in Sources */,
 				FF0F01F61FD0570100FC8494 /* Utils.swift in Sources */,
 				FF0F01F41FD04DFB00FC8494 /* TestModel.swift in Sources */,
