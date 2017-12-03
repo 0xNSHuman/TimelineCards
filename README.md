@@ -1,7 +1,7 @@
 <h1 align="center"> TimelineCards </h1>
 <p align="center">
 <a href="https://opensource.org/licenses/MIT"><img alt="Licence" src="https://img.shields.io/badge/license-MIT-green.svg" /></a>
-<a href=""><img alt="Version" src="https://img.shields.io/badge/version-1.0.2-blue.svg" /></a>
+<a href=""><img alt="Version" src="https://img.shields.io/badge/version-1.0.3-blue.svg" /></a>
 <a href=""><img alt="Swift Version" src="https://img.shields.io/badge/swift_versions-3.2|4.0-orange.svg" /></a>
 <a href="https://cocoapods.org/pods/TimelineCards"><img alt="Licence" src="https://img.shields.io/badge/pod-TimelineCards-red.svg" /></a>
 </p>
