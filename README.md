@@ -38,7 +38,7 @@ Go to Demo project, it has a lot of things demonstrated! If you get confused wit
 
 ### Single Card
 
-Cards in **TimelineCards** kit are highly customizable views that present ordered set of data. They were designed to describe events or milestones, but nothing prevents from using them for different purposes, given that every element can have unlimited complexity.
+Cards in **TimelineCards** kit are highly customizable views that present ordered set of data. They were designed to describe events or milestones, but nothing prevents you from using them for different purposes, given that every element can have unlimited complexity.
 
 Cards support elements grouping, although current version doesn't support recursively nested groups (~~and probably never will~~).
 
@@ -131,7 +131,7 @@ func elementsForTimelineCard(_ timelineCard: TimelineCard, containerWidth: CGFlo
 
 There are two options of creating `TimelineItem` and `TimelineItemGroup`.
 
-1. Using simple preset with only **Title** and **Subtitle** to be shown for item. you can still affect their appearance because you send attributed strings as parameters:
+1. Using simple preset with only **Title** and **Subtitle** to be shown for item. You can still affect their appearance because you send attributed strings as parameters:
 
 ```
 let attrubitedTitle = NSAttributedString(string: "Event title", attributes: [.foregroundColor : UIColor.white])
@@ -295,9 +295,9 @@ func didTouchFooterView(_ footerView: UIView, timelineCardIndex: Int)
 ## Contact
 Feel free to send pull requests or propose changes.
 
-Reach me on [Facebook](https://facebook.com/vaverin)
+Reach me on [Facebook](https://facebook.com/vaverin).
 
-Or check other ways to contact me at [vladaverin.me](http://vladaverin.me)
+Or check other ways to contact me at [vladaverin.me](http://vladaverin.me).
 
 ## License
 TimelineCards is released under an MIT license. See the [LICENSE](https://raw.githubusercontent.com/vladaverin24/TimelineCards/master/LICENSE.md) file.
