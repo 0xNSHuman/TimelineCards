@@ -262,6 +262,17 @@ public class TimelineFeed: UIView, UITableViewDataSource, UITableViewDelegate, T
 	
 	// MARK: Appearance
 	
+	override public var frame: CGRect {
+		didSet {
+			cardsContainer.frame = bounds
+			cardsContainer.estimatedRowHeight = frame.height
+			
+			if oldValue == .zero {
+				cardsContainer.backgroundColor = .clear
+			}
+		}
+	}
+	
 	public var paddingBetweenCards: CGFloat = 20.0 {
 		didSet {
 			reloadData()
@@ -278,9 +289,21 @@ public class TimelineFeed: UIView, UITableViewDataSource, UITableViewDelegate, T
 	
 	// MARK: Initializers
 	
+	init() {
+		super.init(frame: .zero)
+		setUpCardsContainer()
+	}
+	
 	public override init(frame: CGRect) {
 		super.init(frame: frame)
-		
+		setUpCardsContainer()
+	}
+	
+	required public init?(coder aDecoder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
+	
+	private func setUpCardsContainer() {
 		backgroundColor = .clear
 		
 		cardsContainer.frame = bounds
@@ -296,10 +319,6 @@ public class TimelineFeed: UIView, UITableViewDataSource, UITableViewDelegate, T
 		cardsContainer.showsVerticalScrollIndicator = false
 		
 		addSubview(cardsContainer)
-	}
-	
-	required public init?(coder aDecoder: NSCoder) {
-		fatalError("init(coder:) has not been implemented")
 	}
 	
 	// MARK: Life cycle
