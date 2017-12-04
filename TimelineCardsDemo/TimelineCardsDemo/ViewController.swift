@@ -3,7 +3,6 @@
 //  TimelineCardDemo
 //
 //  Created by Vladislav Averin on 27/11/2017.
-//  Copyright © 2017 Vlad Averin. All rights reserved.
 //
 
 import UIKit
@@ -12,11 +11,11 @@ import TimelineCards
 class ViewController: UIViewController, TimelineFeedDataSource, TimelineFeedDelegate {
 	// MARK: Properties
 	
-	var timelineFeed: TimelineFeed? = nil
+	var timelineFeed = TimelineFeed()
 	let testCollection = TimelineDataCollection()
 	
 	// MARK: Life cycle
-
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
@@ -33,31 +32,32 @@ class ViewController: UIViewController, TimelineFeedDataSource, TimelineFeedDele
 	
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
-		initializeFeedFlow()
+		setUpFeed()
 	}
 	
 	// MARK: Test setup
 	
-	private func initializeFeedFlow() {
-		guard self.timelineFeed == nil else { return }
+	private func setUpFeed() {
+		guard timelineFeed.superview == nil else { return }
 		
-		let timelineFeed = TimelineFeed(frame: CGRect(x: 0, y: 0, width: view.bounds.width * 0.8, height: view.bounds.height))
+		timelineFeed.frame = CGRect(x: 0, y: 0, width: view.bounds.width * 0.8, height: view.bounds.height)
 		
 		timelineFeed.center = view.center
 		timelineFeed.dataSource = self
 		timelineFeed.delegate = self
+		
+		timelineFeed.topMargin = 30.0
+		timelineFeed.bottomMargin = 10.0
 		
 		timelineFeed.alpha = 0.0
 		view.addSubview(timelineFeed)
 		timelineFeed.reloadData()
 		
 		animate(block: {
-			timelineFeed.alpha = 1.0
+			self.timelineFeed.alpha = 1.0
 		})
-		
-		self.timelineFeed = timelineFeed
 	}
-
+	
 	// MARK: TimelineFeedDataSource
 	
 	func numberOfCards(in timelineFeed: TimelineFeed) -> Int {
@@ -115,15 +115,13 @@ class ViewController: UIViewController, TimelineFeedDataSource, TimelineFeedDele
 				let itemDescView = UIView(frame: CGRect(x: 0, y: 0, width: containerWidth, height: 60))
 				itemDescView.backgroundColor = .clear
 				
-				let titleLabel = UILabel(frame: CGRect(x: 0, y: 0,
-												   width: itemDescView.bounds.width * 0.7, height: itemDescView.bounds.height * 0.4))
+				let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: itemDescView.bounds.width * 0.7, height: itemDescView.bounds.height * 0.4))
 				titleLabel.text = event.eventName
 				titleLabel.textColor = .black
 				titleLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 22.0)
 				itemDescView.addSubview(titleLabel)
 				
-				let subtitleLabel = UILabel(frame: CGRect(x: 0, y: itemDescView.bounds.height * 0.4,
-													  width: itemDescView.bounds.width * 0.7, height: itemDescView.bounds.height * 0.6))
+				let subtitleLabel = UILabel(frame: CGRect(x: 0, y: itemDescView.bounds.height * 0.4, width: itemDescView.bounds.width * 0.7, height: itemDescView.bounds.height * 0.6))
 				subtitleLabel.textColor = .darkGray
 				subtitleLabel.numberOfLines = 2
 				subtitleLabel.font = UIFont(name: "HelveticaNeue-Light", size: 12.0)
@@ -253,4 +251,3 @@ class ViewController: UIViewController, TimelineFeedDataSource, TimelineFeedDele
 		navigationController?.pushViewController(detailsVC, animated: true)
 	}
 }
-
