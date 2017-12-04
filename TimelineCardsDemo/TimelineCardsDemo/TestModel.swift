@@ -15,7 +15,7 @@ class TimelineDataCollection {
 	
 	init() {
 		var items = [TimelineData]()
-		for i in 0 ..< ((arc4random() % 800) + 200) {
+		for i in 0 ..< ((arc4random() % 400) + 200) {
 			items.append(TimelineData(date: NSCalendar.current.startOfDay(for: NSDate(timeIntervalSinceNow: TimeInterval(60 * 60 * 24 * i)) as Date) as NSDate))
 		}
 		
