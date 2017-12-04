@@ -1,7 +1,7 @@
 <h1 align="center"> TimelineCards </h1>
 <p align="center">
 <a href="https://opensource.org/licenses/MIT"><img alt="Licence" src="https://img.shields.io/badge/license-MIT-green.svg" /></a>
-<a href=""><img alt="Version" src="https://img.shields.io/badge/version-1.0.3-blue.svg" /></a>
+<a href=""><img alt="Version" src="https://img.shields.io/badge/version-1.0.5-blue.svg" /></a>
 <a href=""><img alt="Swift Version" src="https://img.shields.io/badge/swift_versions-3.2|4.0-orange.svg" /></a>
 <a href="https://cocoapods.org/pods/TimelineCards"><img alt="Licence" src="https://img.shields.io/badge/pod-TimelineCards-red.svg" /></a>
 </p>
@@ -198,8 +198,10 @@ timelineFeed.center = view.center
 timelineFeed.dataSource = self
 timelineFeed.delegate = self
 
-// Optional customization option
+// Optional customization options
 timelineFeed.paddingBetweenCards = 20.0
+timelineFeed.topMargin = 20.0
+timelineFeed.bottomMargin = 20.0
 
 view.addSubview(timelineFeed)
 timelineFeed.reloadData()
@@ -292,9 +294,10 @@ func didTouchFooterView(_ footerView: UIView, timelineCardIndex: Int)
 - [ ] Horizontal scrolling/paging
 - [ ] Force-touch peek for embedded elements
 
-## Contact
+## Contact Author
 Feel free to send pull requests or propose changes.
 
+Email: [hello@vladaverin.me](mailto:?to=hello@vladaverin.me)
 Reach me on [Facebook](https://facebook.com/vaverin).
 
 Or check other ways to contact me at [vladaverin.me](http://vladaverin.me).
