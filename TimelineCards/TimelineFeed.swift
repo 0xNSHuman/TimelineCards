@@ -35,16 +35,14 @@ public protocol TimelineFeedDataSource {
 	func card(at index: Int, in timelineFeed: TimelineFeed) -> TimelineCard
 	func elementsForTimelineCard(at index: Int, containerWidth: CGFloat) -> [TimelineSourceElement]
 	
-	func titleAndSubtitle(at index: Int,
-	                      in timelineFeed: TimelineFeed) -> (NSAttributedString, NSAttributedString?)?
+	func titleAndSubtitle(at index: Int, in timelineFeed: TimelineFeed) -> (NSAttributedString, NSAttributedString?)?
 	func headerViewForCard(at index: Int, in timelineFeed: TimelineFeed) -> UIView?
 }
 
 // Optional protocol methods implementation for pure Swift
 
 public extension TimelineFeedDataSource {
-	func titleAndSubtitle(at index: Int,
-	                      in timelineFeed: TimelineFeed) -> (NSAttributedString, NSAttributedString?)? {
+	func titleAndSubtitle(at index: Int, in timelineFeed: TimelineFeed) -> (NSAttributedString, NSAttributedString?)? {
 		return nil
 	}
 	
@@ -96,14 +94,12 @@ fileprivate class SimpleTimelineItemHeader: UIView {
 		
 		let titleHeight: CGFloat = subtitle != nil ? titlesContainer.bounds.height / 2 : titlesContainer.bounds.height
 		
-		titleLabel = UILabel(frame: CGRect(x: 0, y: 0,
-		                                   width: titlesContainer.bounds.width, height: titleHeight))
+		titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: titlesContainer.bounds.width, height: titleHeight))
 		titleLabel.attributedText = title
 		titlesContainer.addSubview(titleLabel)
 		
 		if let subtitle = subtitle {
-			subtitleLabel = UILabel(frame: CGRect(x: 0, y: titlesContainer.bounds.height / 2,
-			                                      width: titlesContainer.bounds.width, height: titlesContainer.bounds.height / 2))
+			subtitleLabel = UILabel(frame: CGRect(x: 0, y: titlesContainer.bounds.height / 2, width: titlesContainer.bounds.width, height: titlesContainer.bounds.height / 2))
 			subtitleLabel.attributedText = subtitle
 			titlesContainer.addSubview(subtitleLabel)
 		}
@@ -207,14 +203,12 @@ fileprivate class TimelineFeedCell: UITableViewCell {
 	}
 	
 	func setUp(customHeaderView: UIView,
-	           card: TimelineCard) {
+			   card: TimelineCard) {
 		
 		setUp(card: card, headerStrings: nil, customHeaderView: customHeaderView)
 	}
 	
-	func setUp(title: NSAttributedString, subtitle: NSAttributedString? = nil,
-	           card: TimelineCard) {
-		
+	func setUp(title: NSAttributedString, subtitle: NSAttributedString? = nil, card: TimelineCard) {
 		setUp(card: card, headerStrings: (title, subtitle), customHeaderView: nil)
 	}
 	
@@ -243,8 +237,7 @@ fileprivate class TimelineFeedCell: UITableViewCell {
 		
 		card.reload()
 		
-		card.frame = CGRect(origin: CGPoint(x: 0.0, y: (headerView?.frame.origin.y ?? 0.0) + (headerView?.frame.height ?? 0.0)),
-		                    size: card.bounds.size)
+		card.frame = CGRect(origin: CGPoint(x: 0.0, y: (headerView?.frame.origin.y ?? 0.0) + (headerView?.frame.height ?? 0.0)), size: card.bounds.size)
 		
 		self.insertSubview(card, at: subviews.count)
 		
