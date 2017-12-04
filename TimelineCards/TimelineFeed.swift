@@ -279,6 +279,28 @@ public class TimelineFeed: UIView, UITableViewDataSource, UITableViewDelegate, T
 		}
 	}
 	
+	public var topMargin: CGFloat = 20.0 {
+		didSet {
+			if cardsContainer.tableHeaderView == nil {
+				cardsContainer.tableHeaderView = UIView()
+				cardsContainer.tableHeaderView?.backgroundColor = .clear
+			}
+			
+			cardsContainer.tableHeaderView?.frame = CGRect(x: 0, y: 0, width: 0, height: topMargin)
+		}
+	}
+	
+	public var bottomMargin: CGFloat = 20.0 {
+		didSet {
+			if cardsContainer.tableFooterView == nil {
+				cardsContainer.tableFooterView = UIView()
+				cardsContainer.tableFooterView?.backgroundColor = .clear
+			}
+			
+			cardsContainer.tableFooterView?.frame = CGRect(x: 0, y: 0, width: 0, height: bottomMargin)
+		}
+	}
+	
 	// MARK: Source
 	
 	public var dataSource: TimelineFeedDataSource? = nil
@@ -315,8 +337,10 @@ public class TimelineFeed: UIView, UITableViewDataSource, UITableViewDelegate, T
 		cardsContainer.delegate = self
 		
 		cardsContainer.register(TimelineFeedCell.self, forCellReuseIdentifier: String(describing: TimelineFeedCell.self))
-		cardsContainer.tableFooterView = UIView(frame: .zero)
 		cardsContainer.showsVerticalScrollIndicator = false
+		
+		topMargin = CGFloat(topMargin)
+		bottomMargin = CGFloat(bottomMargin)
 		
 		addSubview(cardsContainer)
 	}
