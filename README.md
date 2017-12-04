@@ -49,7 +49,7 @@ Cards support elements grouping, although current version doesn't support recurs
 #### Creation
 If you want to present a single static timeline — `TimelineCard` object is just what you need. Let's create it:
 
-```
+```Swift
 // Let's say you want card to be 80% of its superview's width
 let timelineWidth: CGFloat = view.bounds.width * 0.8
 
@@ -67,7 +67,7 @@ Height of the card will be calculated automatically based on its data source, an
 
 The creation code above is enough for a simple card with neutral (but nice) appearance to work. Nevertheless, card appearance can be customized in a number of ways. Here are some examples:
 
-```
+```Swift
 demoCard.backgroundColor = .white
 demoCard.borderAppearance = (.orange, 2.0) // color and width
 demoCard.cornerRadius = 20.0
@@ -79,7 +79,7 @@ demoCard.margins = (20, 10, 20, 10) // css-like notation
 
 You can also set card **header** and **footer** to be any custom `UIView` you'd like. Card will update its layout accordingly.
 
-```
+```Swift
 let header = UIView(frame: CGRect(x: 0, y: 0, width: detailsCard.bounds.width, height: 60))
 header.backgroundColor = .purple
 demoCard.headerView = header
@@ -91,7 +91,7 @@ demoCard.footerView = footer
 
 As soon as you make any of the above updates, card rebuilds itself automatically. It you want to rule this process manually (saves resources), just turn this feature off:
 
-```
+```Swift
 demoCard.autoreload = false
 ```
 
@@ -103,7 +103,7 @@ First, make your data provider comply with `TimelineCardDataProvider` and `Timel
 
 Now, let's send some data to your card when it requests so. You do this by creating array consisting of `TimelineItem` and/or `TimelineItemGroup` objects, which are the main data units that you use in **TimelineCards** kit. They both comply with `TimelineSourceElement` protocol — type that you must return in result.
 
-```
+```Swift
 func elementsForTimelineCard(_ timelineCard: TimelineCard, containerWidth: CGFloat) -> [TimelineSourceElement] {
 	var cardSource = [] as [TimelineSourceElement]
 
@@ -133,7 +133,7 @@ There are two options of creating `TimelineItem` and `TimelineItemGroup`.
 
 1. Using simple preset with only **Title** and **Subtitle** to be shown for item. You can still affect their appearance because you send attributed strings as parameters:
 
-```
+```Swift
 let attrubitedTitle = NSAttributedString(string: "Event title", attributes: [.foregroundColor : UIColor.white])
 let attrubitedSubTitle = NSAttributedString(string: "Event subtitle", attributes: [.foregroundColor : UIColor.white])
 
@@ -147,7 +147,7 @@ let groupItem = TimelineItemGroup(title: attrubitedTitle, subtitle: attrubitedSu
 
 2. Using custom view of any height (but limited to `containerWidth`) to describe item in the way you want:
 
-```
+```Swift
 let itemDescView = UIView(frame: CGRect(x: 0, y: 0, width: containerWidth, height: 65.0))
 itemDescView.backgroundColor = .lightGray
 // Customize it the way you want!
@@ -166,7 +166,7 @@ This way you build array of uniquely customized items for the card.
 
 This one is pretty straight-forward ans self-describing. You just use thise methods to handle events from cards:
 
-```
+```Swift
 func didSelectElement(at index: Int, in timelineCard: TimelineCard)
 
 func didSelectSubElement(at index: (Int, Int), in timelineCard: TimelineCard)
@@ -189,7 +189,7 @@ Cards Feed is represented by `TimelineFeed` view, which is basically a vertical 
 #### Creation
 Initialize new `TimelineFeed` object and set its `dataSource` and `delegate`:
 
-```
+```Swift
 let timelineWidth: CGFloat = view.bounds.width * 0.8
 
 let timelineFeed = TimelineFeed(frame: CGRect(x: 0, y: 0, width: view.bounds.width * 0.8, height: view.bounds.height))
@@ -215,7 +215,7 @@ Make your data provider comply with `TimelineFeedDataSource` and `TimelineFeedDe
 
 Start with method that tells feed how many cards you want it to present:
 
-```
+```Swift
 func numberOfCards(in timelineFeed: TimelineFeed) -> Int {
 	return timelinesCollection.items.count
 }
@@ -223,7 +223,7 @@ func numberOfCards(in timelineFeed: TimelineFeed) -> Int {
 
 Now, let's initialize new card every time feed asks us to for given index:
 
-```
+```Swift
 func card(at index: Int, in timelineFeed: TimelineFeed) -> TimelineCard {
 	let timelineCard = TimelineCard(width: timelineFeed.bounds.width)
 	// Customize as you'd do with Single Card
@@ -234,7 +234,7 @@ func card(at index: Int, in timelineFeed: TimelineFeed) -> TimelineCard {
 
 Good! Now, whenever particular card is about to be reused in feed, it will kindly ask you to provide data for it. This is very similar to what we did for a Single Card. Just create some `TimelineSourceElement`s:
 
-```
+```Swift
 func elementsForTimelineCard(at index: Int, containerWidth: CGFloat) -> [TimelineSourceElement] {
 	var elements = [] as [TimelineSourceElement]
 
@@ -248,7 +248,7 @@ Ok, cards are set up and running smoothly, but you can also add headers on top o
 
 1. Keep it simple and use attributed **Title** and **Subtitle** preset (or just **Title** if you want to keep it minimal):
 
-```
+```Swift
 func titleAndSubtitle(at index: Int, in timelineFeed: TimelineFeed) -> (NSAttributedString, NSAttributedString?)? {
 
 	let timelineData = timelinesCollection.items[index]
@@ -266,7 +266,7 @@ func titleAndSubtitle(at index: Int, in timelineFeed: TimelineFeed) -> (NSAttrib
 
 2. Use custom `UIView`:
 
-```
+```Swift
 func headerViewForCard(at index: Int, in timelineFeed: TimelineFeed) -> UIView? {
 	let customHeader = UIView(frame: CGRect(x: 0, y: 0, width: timelineFeed.bounds.width, height: 60.0))
 	customHeader.backgroundColor = .purple
@@ -278,7 +278,7 @@ func headerViewForCard(at index: Int, in timelineFeed: TimelineFeed) -> UIView? 
 
 Fairly simple and similar to event handling for a Single Card. The difference is that you get index of the card where event did occur.
 
-```
+```Swift
 func didSelectElement(at index: Int, timelineCardIndex: Int)
 
 func didSelectSubElement(at index: (Int, Int), timelineCardIndex: Int)
