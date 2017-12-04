@@ -35,16 +35,14 @@ public protocol TimelineFeedDataSource {
 	func card(at index: Int, in timelineFeed: TimelineFeed) -> TimelineCard
 	func elementsForTimelineCard(at index: Int, containerWidth: CGFloat) -> [TimelineSourceElement]
 	
-	func titleAndSubtitle(at index: Int,
-	                      in timelineFeed: TimelineFeed) -> (NSAttributedString, NSAttributedString?)?
+	func titleAndSubtitle(at index: Int, in timelineFeed: TimelineFeed) -> (NSAttributedString, NSAttributedString?)?
 	func headerViewForCard(at index: Int, in timelineFeed: TimelineFeed) -> UIView?
 }
 
 // Optional protocol methods implementation for pure Swift
 
 public extension TimelineFeedDataSource {
-	func titleAndSubtitle(at index: Int,
-	                      in timelineFeed: TimelineFeed) -> (NSAttributedString, NSAttributedString?)? {
+	func titleAndSubtitle(at index: Int, in timelineFeed: TimelineFeed) -> (NSAttributedString, NSAttributedString?)? {
 		return nil
 	}
 	
@@ -96,14 +94,12 @@ fileprivate class SimpleTimelineItemHeader: UIView {
 		
 		let titleHeight: CGFloat = subtitle != nil ? titlesContainer.bounds.height / 2 : titlesContainer.bounds.height
 		
-		titleLabel = UILabel(frame: CGRect(x: 0, y: 0,
-		                                   width: titlesContainer.bounds.width, height: titleHeight))
+		titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: titlesContainer.bounds.width, height: titleHeight))
 		titleLabel.attributedText = title
 		titlesContainer.addSubview(titleLabel)
 		
 		if let subtitle = subtitle {
-			subtitleLabel = UILabel(frame: CGRect(x: 0, y: titlesContainer.bounds.height / 2,
-			                                      width: titlesContainer.bounds.width, height: titlesContainer.bounds.height / 2))
+			subtitleLabel = UILabel(frame: CGRect(x: 0, y: titlesContainer.bounds.height / 2, width: titlesContainer.bounds.width, height: titlesContainer.bounds.height / 2))
 			subtitleLabel.attributedText = subtitle
 			titlesContainer.addSubview(subtitleLabel)
 		}
@@ -207,14 +203,12 @@ fileprivate class TimelineFeedCell: UITableViewCell {
 	}
 	
 	func setUp(customHeaderView: UIView,
-	           card: TimelineCard) {
+			   card: TimelineCard) {
 		
 		setUp(card: card, headerStrings: nil, customHeaderView: customHeaderView)
 	}
 	
-	func setUp(title: NSAttributedString, subtitle: NSAttributedString? = nil,
-	           card: TimelineCard) {
-		
+	func setUp(title: NSAttributedString, subtitle: NSAttributedString? = nil, card: TimelineCard) {
 		setUp(card: card, headerStrings: (title, subtitle), customHeaderView: nil)
 	}
 	
@@ -243,8 +237,7 @@ fileprivate class TimelineFeedCell: UITableViewCell {
 		
 		card.reload()
 		
-		card.frame = CGRect(origin: CGPoint(x: 0.0, y: (headerView?.frame.origin.y ?? 0.0) + (headerView?.frame.height ?? 0.0)),
-		                    size: card.bounds.size)
+		card.frame = CGRect(origin: CGPoint(x: 0.0, y: (headerView?.frame.origin.y ?? 0.0) + (headerView?.frame.height ?? 0.0)), size: card.bounds.size)
 		
 		self.insertSubview(card, at: subviews.count)
 		
@@ -269,9 +262,42 @@ public class TimelineFeed: UIView, UITableViewDataSource, UITableViewDelegate, T
 	
 	// MARK: Appearance
 	
+	override public var frame: CGRect {
+		didSet {
+			cardsContainer.frame = bounds
+			cardsContainer.estimatedRowHeight = frame.height
+			
+			if oldValue == .zero {
+				cardsContainer.backgroundColor = .clear
+			}
+		}
+	}
+	
 	public var paddingBetweenCards: CGFloat = 20.0 {
 		didSet {
 			reloadData()
+		}
+	}
+	
+	public var topMargin: CGFloat = 20.0 {
+		didSet {
+			if cardsContainer.tableHeaderView == nil {
+				cardsContainer.tableHeaderView = UIView()
+				cardsContainer.tableHeaderView?.backgroundColor = .clear
+			}
+			
+			cardsContainer.tableHeaderView?.frame = CGRect(x: 0, y: 0, width: 0, height: topMargin)
+		}
+	}
+	
+	public var bottomMargin: CGFloat = 20.0 {
+		didSet {
+			if cardsContainer.tableFooterView == nil {
+				cardsContainer.tableFooterView = UIView()
+				cardsContainer.tableFooterView?.backgroundColor = .clear
+			}
+			
+			cardsContainer.tableFooterView?.frame = CGRect(x: 0, y: 0, width: 0, height: bottomMargin)
 		}
 	}
 	
@@ -285,9 +311,21 @@ public class TimelineFeed: UIView, UITableViewDataSource, UITableViewDelegate, T
 	
 	// MARK: Initializers
 	
+	init() {
+		super.init(frame: .zero)
+		setUpCardsContainer()
+	}
+	
 	public override init(frame: CGRect) {
 		super.init(frame: frame)
-		
+		setUpCardsContainer()
+	}
+	
+	required public init?(coder aDecoder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
+	
+	private func setUpCardsContainer() {
 		backgroundColor = .clear
 		
 		cardsContainer.frame = bounds
@@ -299,14 +337,12 @@ public class TimelineFeed: UIView, UITableViewDataSource, UITableViewDelegate, T
 		cardsContainer.delegate = self
 		
 		cardsContainer.register(TimelineFeedCell.self, forCellReuseIdentifier: String(describing: TimelineFeedCell.self))
-		cardsContainer.tableFooterView = UIView(frame: .zero)
 		cardsContainer.showsVerticalScrollIndicator = false
 		
+		topMargin = CGFloat(topMargin)
+		bottomMargin = CGFloat(bottomMargin)
+		
 		addSubview(cardsContainer)
-	}
-	
-	required public init?(coder aDecoder: NSCoder) {
-		fatalError("init(coder:) has not been implemented")
 	}
 	
 	// MARK: Life cycle

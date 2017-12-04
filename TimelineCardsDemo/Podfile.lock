@@ -1,11 +1,11 @@
 PODS:
-  - TimelineCards (1.0.2)
+  - TimelineCards (1.0.5)
 
 DEPENDENCIES:
   - TimelineCards
 
 SPEC CHECKSUMS:
-  TimelineCards: 1c8df98f3f3158cfe85c15d191eee9641ff7df0b
+  TimelineCards: 8f3377fbe40ae587b5ad9e6d29dd7e6d2654e418
 
 PODFILE CHECKSUM: 999f54a798def3ac83b084353b817d40ff95ef81
 
