@@ -832,6 +832,7 @@ public class TimelineCard: UIView {
 		
 		return indexOfLocation(timelineView.convert(location, to: timelineContainer), in: metrics.elementIconSpaces, containerOriginX: margins.0, containerWidth: timelineContainer.bounds.width) ?? indexOfLocation(timelineView.convert(location, to: descriptionViewsContainer), in: metrics.elementDescriptionSpaces, containerOriginX: 0, containerWidth: descriptionViewsContainer.bounds.width)
 	}
+	var shadowLayer: UIView?
 }
 
 // MARK: Helper extension
@@ -847,14 +848,20 @@ fileprivate extension TimelineCard {
 	}
 	
 	func applyShadow(offset: CGSize, color: UIColor, opacity: Float, radius: CGFloat) {
-		// This is turned off until someone (me?) fixes shadow for round bordered views. It's low priority for me at the moment.
-		return;
-		
-		layer.masksToBounds = false
-		layer.shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: radius).cgPath
-		layer.shadowColor = color.cgColor
-		layer.shadowOffset = offset
-		layer.shadowOpacity = opacity
-		layer.shadowRadius = radius
+		if self.shadowLayer != nil {
+            return
+        }
+        let shadowLayer = UIView(frame: frame)
+        shadowLayer.backgroundColor = UIColor.clear
+        layer.shadowColor = color.cgColor
+        shadowLayer.layer.shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: radius).cgPath
+        shadowLayer.layer.shadowOffset = offset
+        shadowLayer.layer.shadowOpacity = opacity
+        shadowLayer.layer.shadowRadius = radius
+        shadowLayer.layer.masksToBounds = true
+        shadowLayer.clipsToBounds = false
+        self.shadowLayer = shadowLayer
+        self.superview?.addSubview(shadowLayer)
+        self.superview?.bringSubviewToFront(self)
 	}
 }
