@@ -848,9 +848,7 @@ fileprivate extension TimelineCard {
 	}
 	
 	func applyShadow(offset: CGSize, color: UIColor, opacity: Float, radius: CGFloat) {
-		if self.shadowLayer != nil {
-            return
-        }
+	self.shadowLayer?.removeFromSuperview()
         let shadowLayer = UIView(frame: frame)
         shadowLayer.backgroundColor = UIColor.clear
         layer.shadowColor = color.cgColor
