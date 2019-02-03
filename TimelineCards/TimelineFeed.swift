@@ -140,7 +140,7 @@ fileprivate class TimelineFeedCell: UITableViewCell {
 	
 	// MARK: Initializers
 	
-	override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
 		initState()
 		
@@ -330,7 +330,7 @@ public class TimelineFeed: UIView, UITableViewDataSource, UITableViewDelegate, T
 		
 		cardsContainer.frame = bounds
 		cardsContainer.backgroundColor = .clear
-		cardsContainer.rowHeight = UITableViewAutomaticDimension
+		cardsContainer.rowHeight = UITableView.automaticDimension
 		cardsContainer.estimatedRowHeight = frame.height
 		
 		cardsContainer.dataSource = self
@@ -405,25 +405,25 @@ public class TimelineFeed: UIView, UITableViewDataSource, UITableViewDelegate, T
 	// MARK: TimelineCardEventsHandler
 	
 	public func didSelectElement(at index: Int, in timelineCard: TimelineCard) {
-		guard let cell = (cardsContainer.visibleCells as? [TimelineFeedCell])?.flatMap({ return $0.card == timelineCard ? $0 : nil }).first, let cardIndex = cardsContainer.indexPath(for: cell)?.row else { return }
+		guard let cell = (cardsContainer.visibleCells as? [TimelineFeedCell])?.compactMap({ return $0.card == timelineCard ? $0 : nil }).first, let cardIndex = cardsContainer.indexPath(for: cell)?.row else { return }
 		
 		delegate?.didSelectElement(at: index, timelineCardIndex: cardIndex)
 	}
 	
 	public func didSelectSubElement(at index: (Int, Int), in timelineCard: TimelineCard) {
-		guard let cell = (cardsContainer.visibleCells as? [TimelineFeedCell])?.flatMap({ return $0.card == timelineCard ? $0 : nil }).first, let cardIndex = cardsContainer.indexPath(for: cell)?.row else { return }
+		guard let cell = (cardsContainer.visibleCells as? [TimelineFeedCell])?.compactMap({ return $0.card == timelineCard ? $0 : nil }).first, let cardIndex = cardsContainer.indexPath(for: cell)?.row else { return }
 		
 		delegate?.didSelectSubElement(at: index, timelineCardIndex: cardIndex)
 	}
 	
 	public func didTouchHeaderView(_ headerView: UIView, in timelineCard: TimelineCard) {
-		guard let cell = (cardsContainer.visibleCells as? [TimelineFeedCell])?.flatMap({ return $0.card == timelineCard ? $0 : nil }).first, let cardIndex = cardsContainer.indexPath(for: cell)?.row else { return }
+		guard let cell = (cardsContainer.visibleCells as? [TimelineFeedCell])?.compactMap({ return $0.card == timelineCard ? $0 : nil }).first, let cardIndex = cardsContainer.indexPath(for: cell)?.row else { return }
 		
 		delegate?.didTouchHeaderView(headerView, timelineCardIndex: cardIndex)
 	}
 	
 	public func didTouchFooterView(_ footerView: UIView, in timelineCard: TimelineCard) {
-		guard let cell = (cardsContainer.visibleCells as? [TimelineFeedCell])?.flatMap({ return $0.card == timelineCard ? $0 : nil }).first, let cardIndex = cardsContainer.indexPath(for: cell)?.row else { return }
+		guard let cell = (cardsContainer.visibleCells as? [TimelineFeedCell])?.compactMap({ return $0.card == timelineCard ? $0 : nil }).first, let cardIndex = cardsContainer.indexPath(for: cell)?.row else { return }
 		
 		delegate?.didTouchFooterView(footerView, timelineCardIndex: cardIndex)
 	}
