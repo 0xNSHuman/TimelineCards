@@ -14,6 +14,7 @@ Pod::Spec.new do |s|
 
   s.platform     = :ios
   s.ios.deployment_target = "8.0"
+  s.swift_version = '4.2'
 
   s.source       = { :git => "https://github.com/vladaverin24/TimelineCards.git", :tag => "v1.0.5" }
 
