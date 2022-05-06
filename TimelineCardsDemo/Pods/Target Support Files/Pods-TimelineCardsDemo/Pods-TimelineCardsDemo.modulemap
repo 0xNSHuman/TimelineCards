@@ -1,0 +1,6 @@
+framework module Pods_TimelineCardsDemo {
+  umbrella header "Pods-TimelineCardsDemo-umbrella.h"
+
+  export *
+  module * { export * }
+}
